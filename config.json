@@ -1,0 +1,20 @@
+{
+  "name": "Pasha Finkelshteyn",
+  "profile_pic": "/image.jpg",
+  "bio": "Years of experience in software engineering and the team's leading roles combined with his passion for Java made Pasha know all the hidden details in this IT niche. As a Developer Advocate for @Bellsoft, he educates the public on the latest software tools built by BellSoft and helps to create and test instruments for developers. He writes in Kotlin, speaks at conferences, composes a new articles, or maintains his pet projects.",
+  "socials": {
+    "mastodon": "https://fosstodon.org/@asm0dey",
+    "linkedin": "https://linkedin.com/in/asm0dey",
+    "github": "https://github.com/asm0dey",
+    "x-twitter": "https://x.com/asm0di0",
+    "bluesky": "https://bsky.app/profile/asm0dey.site",
+    "instagram": "https://www.instagram.com/asm0dey",
+    "telegram": "https://t.me/asm0dey",
+    "facebook": "https://fb.com/asm0dey",
+    "github": "https://github.com/asm0dey"
+  },
+  "buttons": [
+    { "type": "email", "url": "mailto:me@asm0dey.site", "text": "Get in touch" },
+    { "type": "generic", "url": "#", "text": "My Personal Blog", "icon": "fa-solid fa-pen" }
+  ]
+}

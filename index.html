@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img id="profile-pic" src="" alt="Profile">
+            <h1 id="name"></h1>
+            <p id="bio"></p>
+        </header>
+
+        <nav id="socials" class="social-icons"></nav>
+        <main id="links-container" class="links-list"></main>
+    </div>
+
+    <script>
+        // PRESETS: Add your default styles and icons here
+        const presets = {
+            "github":    { icon: "fa-brands fa-github",    bg: "#24292e", color: "#fff", text: "GitHub" },
+            "x-twitter": { icon: "fa-brands fa-twitter", bg: "#000000", color: "#fff", text: "Twitter / X" },
+            "mastodon":  { icon: "fa-brands fa-mastodon",  bg: "#563acc", color: "#fff", text: "Mastodon" },
+            "bluesky":   { icon: "fa-brands fa-bluesky",   bg: "#0085ff", color: "#fff", text: "Bluesky" },
+            "linkedin":  { icon: "fa-brands fa-linkedin",  bg: "#0077b5", color: "#fff", text: "LinkedIn" },
+            "instagram": { icon: "fa-brands fa-instagram", bg: "#e1306c", color: "#fff", text: "Instagram" },
+            "email":     { icon: "fa-solid fa-envelope",   bg: "#007bff", color: "#fff", text: "Email Me" },
+            "generic":   { icon: "fa-solid fa-link",       bg: "#333333", color: "#fff", text: "Link" },
+            "facebook":   { icon: "fa-brands fa-facebook",       bg: "#333333", color: "#fff", text: "Link" },
+            "telegram":  { icon: "fa-brands fa-telegram",       bg: "#333333", color: "#fff", text: "Telegram" }
+        };
+
+        fetch('config.json')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('profile-pic').src = data.profile_pic;
+                document.getElementById('name').innerText = data.name;
+                document.getElementById('bio').innerText = data.bio;
+
+                // 1. Process Social Icons (Small icons row)
+                const socialNav = document.getElementById('socials');
+                Object.entries(data.socials).forEach(([platform, url]) => {
+                    const preset = presets[platform] || presets['generic'];
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.innerHTML = `<i class="${preset.icon}"></i>`;
+                    socialNav.appendChild(a);
+                });
+
+                // 2. Process Main Buttons
+                const container = document.getElementById('links-container');
+                data.buttons.forEach(btn => {
+                    const preset = presets[btn.type] || presets['generic'];
+                    const a = document.createElement('a');
+                    a.href = btn.url;
+                    a.className = 'link-card';
+                    
+                    // Priority: Config text -> Preset text -> fallback
+                    const label = btn.text || preset.text;
+                    const icon = btn.icon || preset.icon;
+                    
+                    a.style.backgroundColor = btn.bg || preset.bg;
+                    a.style.color = btn.color || preset.color;
+                    
+                    a.innerHTML = `<i class="${icon}"></i> <span>${label}</span>`;
+                    container.appendChild(a);
+                });
+            });
+    </script>
+</body>
+</html>
