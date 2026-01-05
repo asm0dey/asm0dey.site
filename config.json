@@ -15,6 +15,7 @@
   },
   "buttons": [
     { "type": "email", "url": "mailto:me@asm0dey.site", "text": "Get in touch" },
-    { "type": "generic", "url": "#", "text": "My Personal Blog", "icon": "fa-solid fa-pen" }
+    { "type": "generic", "url": "https://sessionize.com/asm0dey/#sessions", "text": "My talks", "icon": "fa-solid fa-microphone" },
+    { "type": "generic", "url": "https://cal.asm0dey.site/asm0dey", "text": "Talk to me", "icon": "fa-solid fa-phone" }
   ]
 }
